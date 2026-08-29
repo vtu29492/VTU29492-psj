@@ -1,0 +1,6 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        // Built-in single call O(N) solution
+        return haystack.indexOf(needle);
+    }
+}
