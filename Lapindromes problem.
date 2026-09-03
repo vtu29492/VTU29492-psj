@@ -1,0 +1,55 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    static boolean isLapindrome(String s) {
+        int n = s.length();
+
+        int[] left = new int[26];
+        int[] right = new int[26];
+
+        // Length of each half
+        int half = n / 2;
+
+        // Count left half
+        for (int i = 0; i < half; i++) {
+            left[s.charAt(i) - 'a']++;
+        }
+
+        // Count right half
+        for (int i = n - half; i < n; i++) {
+            right[s.charAt(i) - 'a']++;
+        }
+
+        // Compare frequencies
+        for (int i = 0; i < 26; i++) {
+            if (left[i] != right[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        BufferedReader br =
+                new BufferedReader(new InputStreamReader(System.in));
+
+        int T = Integer.parseInt(br.readLine().trim());
+
+        while (T-- > 0) {
+
+            String s = br.readLine().trim();
+
+            if (isLapindrome(s)) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+
+        br.close();
+    }
+}
